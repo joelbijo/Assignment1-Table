@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Test 1</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/datatables.min.css" />
+  </head>
+  <body>
+    <h1 class="my-3 p-2">Assignment-1 Table</h1>
+    <div class="container my-3">
+      <table
+        id="demoTable"
+        class="table my-2 table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr class="table-warning">
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Joel</td>
+            <td>joel123@gmail.com</td>
+            <td>@joee</td>
+          </tr>
+
+          <tr>
+            <th scope="row">2</th>
+            <td>Ryan</td>
+            <td>ryNa251@gmail.com</td>
+            <td>@__ryaaan</td>
+          </tr>
+
+          <tr>
+            <th scope="row">3</th>
+            <td>Mark</td>
+            <td>marko_cub@rediffmail.com</td>
+            <td>@cu_marko</td>
+          </tr>
+
+          <tr>
+            <th scope="row">4</th>
+            <td>Otto</td>
+            <td>ott000@outlook.com</td>
+            <td>@ott00</td>
+          </tr>
+
+          <tr>
+            <th scope="row">5</th>
+            <td>Dominic</td>
+            <td>dom567@outlook.com</td>
+            <td>@dooom</td>
+          </tr>
+
+          <tr>
+            <th scope="row">6</th>
+            <td>Alina</td>
+            <td>alina@gmail.com</td>
+            <td>@alinaa</td>
+          </tr>
+
+          <tr>
+            <th scope="row">7</th>
+            <td>Marie</td>
+            <td>marieJohn@gmail.com</td>
+            <td>@marieJ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#demoTable").DataTable({
+          pageLength: 5,
+          lengthMenu: [5, 10, 25, 50, 100],
+        });
+      });
+    </script>
+  </body>
+</html>
