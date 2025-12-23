@@ -20,6 +20,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Handle</th>
+            <th scope="col">Course</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <td>Joel</td>
             <td>joel123@gmail.com</td>
             <td>@joee</td>
+            <td>CS</td>
           </tr>
 
           <tr>
@@ -35,6 +37,7 @@
             <td>Ryan</td>
             <td>ryNa251@gmail.com</td>
             <td>@__ryaaan</td>
+            <td>CS</td>
           </tr>
 
           <tr>
@@ -42,6 +45,7 @@
             <td>Mark</td>
             <td>marko_cub@rediffmail.com</td>
             <td>@cu_marko</td>
+            <td>Management</td>
           </tr>
 
           <tr>
@@ -49,6 +53,7 @@
             <td>Otto</td>
             <td>ott000@outlook.com</td>
             <td>@ott00</td>
+            <td>Finance</td>
           </tr>
 
           <tr>
@@ -56,6 +61,7 @@
             <td>Dominic</td>
             <td>dom567@outlook.com</td>
             <td>@dooom</td>
+            <td>CS</td>
           </tr>
 
           <tr>
@@ -63,6 +69,7 @@
             <td>Alina</td>
             <td>alina@gmail.com</td>
             <td>@alinaa</td>
+            <td>Marketing</td>
           </tr>
 
           <tr>
@@ -70,6 +77,7 @@
             <td>Marie</td>
             <td>marieJohn@gmail.com</td>
             <td>@marieJ</td>
+            <td>Marketing</td>
           </tr>
         </tbody>
       </table>
@@ -79,10 +87,50 @@
     <script src="js/datatables.min.js"></script>
 
     <script>
+      /*destroy datatables first, then do the dom, jquery, and then reconstruct the datatables*/
       $(document).ready(function () {
+        var dataTable = $("#demoTable").DataTable({
+          pageLength: 5,
+          lengthMenu: [5, 10, 25, 50],
+          ordering: false,
+          paging: false,
+          searching: false,
+        });
+
+        dataTable.destroy();
+
+        var table = $("#demoTable");
+        var tbody = table.find("tbody");
+        var trow = tbody.find("tr");
+        trow.each(function (index) {
+          //loop
+          var current = $(this); //current object or row
+          var cells = current.children("th, td");
+          var courseCell = cells.eq(4); //Course is index 4
+          var textCourse = courseCell.text().trim();
+          var count = 1; //no. of rows to merge or not
+
+          var nextRow = current.next();
+
+          while (
+            nextRow.length > 0 &&
+            nextRow.children("th, td").eq(4).text() === textCourse
+          ) {
+            count++;
+            nextRow.children("th, td").eq(4).hide();
+            nextRow = nextRow.next();
+          }
+          if (count > 1) {
+            courseCell.attr("rowspan", count);
+          }
+        });
+
         $("#demoTable").DataTable({
           pageLength: 5,
-          lengthMenu: [5, 10, 25, 50, 100],
+          lengthMenu: [5, 10, 25, 50],
+          ordering: false,
+          paging: true,
+          searching: true,
         });
       });
     </script>
